@@ -1,6 +1,7 @@
 // Notice: this is ignored for learning purposes at this stage, not for final use
 // ignore_for_file: prefer_const_constructors
 import 'package:flutter/material.dart';
+import 'story_brain.dart';
 
 //TODO: Step 15 - Run the app and see if you can see the screen update with the first story. Delete this TODO if it looks as you expected.
 
@@ -19,6 +20,7 @@ class Destini extends StatelessWidget {
 }
 
 //TODO: Step 9 - Create a new storyBrain object from the StoryBrain class.
+StoryBrain storybrain = StoryBrain();
 
 class StoryPage extends StatefulWidget {
   const StoryPage({Key? key}) : super(key: key);
@@ -33,6 +35,12 @@ class _StoryPageState extends State<StoryPage> {
     return Scaffold(
       body: Container(
         //TODO: Step 1 - Add background.png to this Container as a background image.
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage("assets/images/background.png"),
+            fit: BoxFit.cover,
+          ),
+        ),
         padding: EdgeInsets.symmetric(vertical: 50.0, horizontal: 15.0),
         constraints: BoxConstraints.expand(),
         child: SafeArea(
