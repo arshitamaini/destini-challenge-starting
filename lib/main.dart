@@ -37,7 +37,7 @@ class _StoryPageState extends State<StoryPage> {
         //TODO: Step 1 - Add background.png to this Container as a background image.
         decoration: BoxDecoration(
           image: DecorationImage(
-            image: AssetImage("assets/images/background.png"),
+            image: AssetImage("images/background.png"),
             fit: BoxFit.cover,
           ),
         ),
@@ -65,6 +65,10 @@ class _StoryPageState extends State<StoryPage> {
                   onPressed: () {
                     //Choice 1 made by user.
                     //TODO: Step 18 - Call the nextStory() method from storyBrain and pass the number 1 as the choice made by the user.
+                    // storybrain.nextStory(1);
+                    setState(() {
+                      storybrain.nextStory(1);
+                    });
                   },
                   style: TextButton.styleFrom(
                     backgroundColor: Colors.red,
@@ -86,22 +90,29 @@ class _StoryPageState extends State<StoryPage> {
                 flex: 2,
                 //TODO: Step 26 - Use a Flutter Visibility Widget to wrap this Button.
                 //TODO: Step 28 - Set the "visible" property of the Visibility Widget to equal the output from the buttonShouldBeVisible() method in the storyBrain.
-                child: TextButton(
-                  style: TextButton.styleFrom(
-                    backgroundColor: Colors.blue,
-                    primary: Colors.white,
-                  ),
-                  onPressed: () {
-                    //Choice 2 made by user.
-                    //TODO: Step 19 - Call the nextStory() method from storyBrain and pass the number 2 as the choice made by the user.
-                  },
-                  child: Text(
-                    //TODO: Step 14 - Use the storyBrain to get the text for choice 2.
-                    storybrain.getchoice2(),
-                    style: TextStyle(
-                      fontSize: 20.0,
+                child: Visibility(
+                  child: TextButton(
+                    style: TextButton.styleFrom(
+                      backgroundColor: Colors.blue,
+                      primary: Colors.white,
+                    ),
+                    onPressed: () {
+                      //Choice 2 made by user.
+                      //TODO: Step 19 - Call the nextStory() method from storyBrain and pass the number 2 as the choice made by the user.
+
+                      setState(() {
+                        storybrain.nextStory(2);
+                      });
+                    },
+                    child: Text(
+                      //TODO: Step 14 - Use the storyBrain to get the text for choice 2.
+                      storybrain.getchoice2(),
+                      style: TextStyle(
+                        fontSize: 20.0,
+                      ),
                     ),
                   ),
+                  visible: storybrain.buttonShouldBeVisible(),
                 ),
               ),
             ],
